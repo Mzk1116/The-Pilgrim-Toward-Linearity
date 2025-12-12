@@ -1,0 +1,122 @@
+\subsection{方程组的行变换}
+
+对于一个方程组
+\[
+    \begin{cases}
+        a_{1, 1}x_{1} + \cdots + a_{1, n}x_{n} = b_{1} \\
+        \qquad \qquad \cdots \cdots \cdots             \\
+        a_{m, 1}x_{1} + \cdots + a_{m, n}x_{n} = b_{m}
+    \end{cases}
+\]
+其增广矩阵 $ A \in \mathbb{R} ^{m \times n + 1} $ 化为一个阶梯形矩阵的一般形式
+\[
+    \begin{bmatrix}
+        0      & \cdots                   & 0      & a_{1, 1}                 &
+        \cdots & a_{1, r_{1} - r_{2} + 1} & \cdots & a_{1, r_{1} - r_{s} + 1} &
+        \cdots & a_{1, r_{1}}                                                   \\
+
+        0      & \cdots                   & 0      & 0                        &
+        \cdots & a_{2, 1}                 & \cdots & a_{1, r_{2} - r_{s} + 1} &
+        \cdots & a_{1, r_{2}}                                                   \\
+
+        \vdots &                          & \vdots & \vdots                   &
+               & \vdots                   &        & \vdots                   &
+               & \vdots                                                         \\
+
+        0      & \cdots                   & 0      & 0                        &
+        \cdots & 0                        & \cdots & a_{s, 1}                 &
+        \cdots & a_{s, r_{s}}                                                   \\
+
+        0      & \cdots                   & 0      & 0                        &
+        \cdots & 0                        & \cdots & 0                        &
+        \cdots & 0                                                              \\
+
+        \vdots &                          & \vdots & \vdots                   &
+               & \vdots                   &        & \vdots                   &
+               & \vdots                                                         \\
+
+        0      & \cdots                   & 0      & 0                        &
+        \cdots & 0                        & \cdots & 0                        &
+        \cdots & 0                                                              \\
+    \end{bmatrix}
+\]
+其中 $ r_{s} \le \cdots \le r_{1} \le n + 1 $ 以及 $ s \le m $
+
+把主元所在的列记为 $ \mathbf{A}_{i}, i \in \{1 \cdots s \} $ 剩下的记为 $ \mathbf{B}_{i, j} $
+\[
+    \begin{bmatrix}
+        \mathbf{O} & \mathbf{A}_{1} & \mathbf{B}_{1} & \cdots & \mathbf{A}_{s} & \mathbf{B}_{s} & \mathbf{C}
+    \end{bmatrix}
+\]
+于是多项式的未知量矩阵
+\[
+    \begin{bmatrix}
+        x_{1}  \\
+        \vdots \\
+        x_{n}  \\
+        -1
+    \end{bmatrix}
+\]
+也可以化为
+\[
+    \begin{bmatrix}
+        \mathbf{X}_{1, n + 1 - r_{1}}     \\
+        \mathbf{X}_{2, 1}                 \\
+        \mathbf{X}_{3, r_{1} - r_{2} - 1} \\
+        \mathbf{X}_{4, 1}                 \\
+        \vdots                            \\
+        \mathbf{X}_{2s, 1}                \\
+        \mathbf{X}_{2s+1, r_{s} - 1}      \\
+        -1
+    \end{bmatrix}
+\]
+所以原方程组可以化为
+\[
+    \begin{bmatrix}
+        \mathbf{O} & \mathbf{A}_{1} & \mathbf{B}_{1} & \cdots & \mathbf{A}_{s} & \mathbf{B}_{s} & \mathbf{C}
+    \end{bmatrix}
+    \begin{bmatrix}
+        \mathbf{X}_{1, n + 1 - r_{1}}     \\
+        \mathbf{X}_{2, 1}                 \\
+        \mathbf{X}_{3, r_{1} - r_{2} - 1} \\
+        \mathbf{X}_{4, 1}                 \\
+        \vdots                            \\
+        \mathbf{X}_{2s, 1}                \\
+        \mathbf{X}_{2s+1, r_{s} - 1}      \\
+        -1
+    \end{bmatrix}
+    =
+    \mathbf{O}
+\]
+移除无关项后
+\[
+    \begin{bmatrix}
+        \mathbf{A}_{1} & \mathbf{B}_{1} & \cdots & \mathbf{A}_{s} & \mathbf{B}_{s}
+    \end{bmatrix}
+    \begin{bmatrix}
+        \mathbf{X}_{2, 1}                 \\
+        \mathbf{X}_{3, r_{1} - r_{2} - 1} \\
+        \mathbf{X}_{4, 1}                 \\
+        \vdots                            \\
+        \mathbf{X}_{2s, 1}                \\
+        \mathbf{X}_{2s+1, r_{s} - 1}      \\
+    \end{bmatrix}
+    =
+    \mathbf{C}
+\]
+给个例子
+\[
+    \begin{bmatrix}
+        0 & 0 & 2 & 3 & 2 & 3 & 1 & 2 \\
+        0 & 0 & 0 & 0 & 0 & 2 & 4 & 5 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 5
+    \end{bmatrix}
+    \rightarrow
+    \begin{bmatrix}
+        2 & 1 & 2 & 3 & 2 & 3 \\
+        0 & 4 & 5 & 0 & 0 & 2 \\
+        0 & 0 & 5 & 0 & 0 & 0
+    \end{bmatrix}
+\]
+方程组的\textbf{同解关系} $ \Leftrightarrow $ 增广矩阵的\textbf{线性变换}
+之后还会学许多变换以及许多关系, 他们之间是否有一一对应的关系

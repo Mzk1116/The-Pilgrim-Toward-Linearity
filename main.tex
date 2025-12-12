@@ -1,0 +1,46 @@
+% main.tex
+\documentclass[12pt, a4paper, oneside, openany]{book}
+
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+
+\setcounter{tocdepth}{1}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+
+    {\Huge\bfseries 线性代数学习笔记 \par}
+    \vspace{1.5cm}
+
+    {\Large 南风 \par}
+    \vspace{0.5cm}
+
+    {\large My computer \par}
+    \vspace{2cm}
+
+    \includegraphics[width=0.6\textwidth]{img/logo.jpg}
+
+    \vfill
+
+    {\large \today \par}
+\end{titlepage}
+\thispagestyle{empty}
+
+\pagenumbering{roman}
+\tableofcontents
+\cleardoublepage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/chapter_01/chapter_01_main.tex}
+
+
+
+\end{document}
