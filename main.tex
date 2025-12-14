@@ -7,10 +7,28 @@
 \usepackage{hyperref}
 \usepackage{amssymb}
 
+% 自定义过程块的样式
+\newtheoremstyle
+{myPlainStyle}
+{}
+{}
+{\itshape}
+{}
+{\bfseries}
+{ }
+{ }
+{\thmname{#1}\thmnumber{#2\\}}
+
+% 使用自定义的样式
+\theoremstyle{myPlainStyle}
+\newtheorem{theorem}{定理}[chapter]
+
+% 目录包含层级数
 \setcounter{tocdepth}{1}
 
 \begin{document}
 
+% 封面
 \begin{titlepage}
     \centering
     \vspace*{2cm}
@@ -40,7 +58,6 @@
 \setcounter{page}{1}
 
 \input{chapters/chapter_01/chapter_01_main.tex}
-
-
+\input{chapters/chapter_02/chapter_02_main.tex}
 
 \end{document}
