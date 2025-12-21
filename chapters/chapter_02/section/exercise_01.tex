@@ -1,0 +1,184 @@
+1.
+\begin{align*}
+    D_{n} & =
+    \begin{vmatrix}
+        x      & y      & y      & \cdots & y      & y      \\
+        z      & x      & y      & \cdots & y      & y      \\
+        z      & z      & x      & \cdots & y      & y      \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        z      & z      & z      & \cdots & x      & y      \\
+        z      & z      & z      & \cdots & z      & x
+    \end{vmatrix} \\
+          & =
+    \begin{vmatrix}
+        x      & y-x    & y-x    & \cdots & y-x    & y-x    \\
+        z      & x-z    & y-z    & \cdots & y-z    & y-z    \\
+        z      & 0      & x-z    & \cdots & y-z    & y-z    \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        z      & 0      & 0      & \cdots & x-z    & y-z    \\
+        z      & 0      & 0      & \cdots & 0      & x-z
+    \end{vmatrix}
+\end{align*}
+按照最后一行展开有
+\begin{align*}
+    D_{n} = (x-z)D_{n-1} + z B_{n-1}
+\end{align*}
+其中
+\begin{align*}
+    B_{n-1} =
+    (-1)^{n+1}
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    & y-x    \\
+        x-z    & y-z    & \cdots & y-z    & y-z    \\
+        0      & x-z    & \cdots & y-z    & y-z    \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0      & 0      & \cdots & x-z    & y-z
+    \end{vmatrix}
+\end{align*}
+下面来讨论 $ B_{n} $ 令 $ C_{n} = \left| B_{n} \right| $
+所以有
+\begin{align*}
+    C_{n} & =
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    & y-x    \\
+        x-z    & y-z    & \cdots & y-z    & y-z    \\
+        0      & x-z    & \cdots & y-z    & y-z    \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        0      & 0      & \cdots & y-z    & y-z    \\
+        0      & 0      & \cdots & x-z    & y-z
+    \end{vmatrix}
+\end{align*}
+展开最后一行有
+\begin{align*}
+    C_{n} = (-1)^{n+n-1}(x-z) &
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    \\
+        x-z    & y-z    & \cdots & y-z    \\
+        0      & x-z    & \cdots & y-z    \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \cdots & y-z
+    \end{vmatrix}  \\
+    +(-1)^{n+n}(y-z)          &
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    \\
+        x-z    & y-z    & \cdots & y-z    \\
+        0      & x-z    & \cdots & y-z    \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \cdots & y-z
+    \end{vmatrix}  \\
+    = (z-x)
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    \\
+        x-z    & y-z    & \cdots & y-z    \\
+        0      & x-z    & \cdots & y-z    \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \cdots & y-z
+    \end{vmatrix}
+                              & +(y-z)
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    \\
+        x-z    & y-z    & \cdots & y-z    \\
+        0      & x-z    & \cdots & y-z    \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \cdots & y-z
+    \end{vmatrix}
+\end{align*}
+注意到 $ (z-x) $ 和 $ (y-z) $ 所乘的行列式相同且为 $ C_{n-1} $
+所以合并同类项后有
+\begin{align*}
+    C_{n} = (z-x+y-z)
+    \begin{vmatrix}
+        y-x    & y-x    & \cdots & y-x    \\
+        x-z    & y-z    & \cdots & y-z    \\
+        0      & x-z    & \cdots & y-z    \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0      & 0      & \cdots & y-z
+    \end{vmatrix}
+    = (y-x) C_{n-1}
+\end{align*}
+最终我们得到了一个递推公式 $ C_{n} = (y-x) C_{n-1} $
+因为 $ C_{2} $ 的样子可能不够明显, 所以我们考虑较为显然的 $ C_{3} $
+所以
+\begin{align*}
+    C_{3} & =
+    \begin{vmatrix}
+        y-x & y-x & y-x \\
+        x-z & y-z & y-z \\
+        0   & x-z & y-z
+    \end{vmatrix} \\
+    & = (z-x)
+    \begin{vmatrix}
+        y-x & y-x \\
+        x-z & y-z
+    \end{vmatrix}
+    + (y-z)
+    \begin{vmatrix}
+        y-x & y-x \\
+        x-z & y-z
+    \end{vmatrix} \\
+    & = (y-x)
+    \begin{vmatrix}
+        y-x & y-x \\
+        x-z & y-z
+    \end{vmatrix} \\
+    & = (y-x) [(y-x)(y-z) - (y-x)(x-z)] \\
+    & = (y-x) (y-x) [(y-z) - (x-z)] \\
+    & = (y-x) (y-x) (y-x) \\
+    & = (y-x)^{3}
+\end{align*}
+由此可知 $ C_{n} = (y-x)^{n} $ 所以 
+\begin{align*}
+    B_{n-1} & = (-1)^{n+1} C_{n-1} \\
+    & = (-1)^{n+1} (y-x)^{n-1} \\
+    & = (-1)^{2} \cdot (-1)^{n-1} (y-x)^{n-1} \\
+    & = (x - y)^{n-1}
+\end{align*}
+带回到 $ D_{n} = (x-z)D_{n-1} + z B_{n-1} $ 有 
+$ D_{n} = (x-z)D_{n-1} + z (x - y)^{n-1} $ 多写几项观察一下规律
+\begin{align*}
+    & D_{n} = (x-z)D_{n-1} + z (x - y)^{n-1} \\
+    & D_{n-1} = (x-z)D_{n-2} + z (x - y)^{n-2}
+\end{align*}
+带入得到
+\begin{align*}
+    D_{n}
+    & = (x-z) \left[ (x-z)D_{n-2} + z (x - y)^{n-2} \right] + z (x - y)^{n-1} \\
+    & = (x-z)^{2}D_{n-2} + z (x-z) (x - y)^{n-2} + z (x - y)^{n-1} \\
+    & = (x-z)^{2}D_{n-2} + z(x - y)^{n-2}((x-z) + (x-y))
+\end{align*}
+把 $ D_{n-2} = (x-z)D_{n-3} + z (x - y)^{n-3} $ 再带入得到
+\begin{align*}
+    D_{n}
+    = & (x-z)^{2} \left[ (x-z)D_{n-3} + z (x - y)^{n-3} \right] \\
+    & + z(x - y)^{n-2} \left[ (x-z) + (x-y) \right] \\
+    = & (x-z)^{3}D_{n-3} \\ 
+    & + z (x-z)^{2} (x-y)^{n-3} + z (x - y)^{n-2} \left[ (x-z) + (x-y) \right] \\
+    = & (x-z)^{3}D_{n-3} + z (x-y)^{n-3} \\
+    & \left[ (x-z)^{2} + (x-y) \left[ (x-z) + (x-y) \right] \right] \\
+    = & (x-z)^{3}D_{n-3} + z (x-y)^{n-3} \\
+    & \left[ (x-z)^{2} + (x-y)(x-z) + (x-y)^{2} \right]
+\end{align*}
+大胆推测
+\begin{align*}
+    D_{n}
+    & = (x-z)^{m}D_{n-m} + z(x - y)^{n-m} \\
+    & \left[ (x-z)^{m-1}(x-y)^{0} + \cdots \text{一共m项} \cdots + (x-z)^{0}(x-y)^{m-1} \right]
+\end{align*}
+可以看出最后的是个等比数列, 可以计算出
+\begin{align*}
+    & (x-z)^{m-1}(x-y)^{0} + \cdots + (x-z)^{0}(x-y)^{m-1} \\
+    = & \frac{(x-y)^{m} - (x-z)^{m}}{(x-y) - (x-z)} \\
+    = & \frac{(x-y)^{m} - (x-z)^{m}}{(z-y)}
+\end{align*}
+因此 
+\begin{align*}
+    D_{n} 
+    & = (x-z)^{m}D_{n-m} + z(x - y)^{n-m} \left[ \frac{(x-y)^{m} - (x-z)^{m}}{(z-y)} \right] \\
+    & = (x-z)^{m}D_{n-m} + \frac{z}{z-y} \left[ (x-y)^{n} - (x-y)^{n-m}(x-z)^{m} \right]
+\end{align*}
+可以计算出 $ D_{1} = \begin{vmatrix} x \end{vmatrix} = x $ 
+所以当 $ m = n-1 $ 时就有
+\begin{align*}
+    D_{n} & = (x-z)^{n-1}x + \frac{z}{z-y}
+    \left[ (x-y)^{n} - (x-y)(x-z)^{n-1} \right]
+\end{align*}
